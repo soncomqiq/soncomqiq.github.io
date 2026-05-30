@@ -1,0 +1,73 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+html[lang='en'] {
+  --font-display: 'Sora', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html[lang='th'] {
+  --font-display: 'Noto Sans Thai', 'Sarabun', 'Tahoma', sans-serif;
+  --font-body: 'Noto Sans Thai', 'Plus Jakarta Sans', 'Tahoma', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.4;
+  overflow: visible;
+  padding: 0 0.02em 0.12em;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.14s;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #FFFFFF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

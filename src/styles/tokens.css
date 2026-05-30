@@ -1,0 +1,58 @@
+:root {
+  /* Brand */
+  --color-primary: #0B1F3A;
+  --color-secondary: #1F3B5B;
+  --color-accent: #0D9488;
+  --color-accent-hover: #0B7E74;
+  --color-accent-2: #F59E0B;
+
+  /* Surface */
+  --color-bg: #F4F8FC;
+  --color-bg-alt: #EAF1F8;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #DDE7F2;
+
+  /* Content */
+  --color-text-primary: #081323;
+  --color-text-secondary: #334155;
+  --color-text-tertiary: #64748B;
+
+  /* Border */
+  --color-border-subtle: #D7E2EE;
+  --color-border-medium: #BDD0E4;
+  --color-border-strong: #0B1F3A;
+
+  /* Semantic */
+  --color-success: #15803D;
+  --color-warning: #B45309;
+  --color-error: #DC2626;
+
+  /* Typography */
+  --font-display: 'Sora', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 2px 6px rgba(11, 31, 58, 0.08);
+  --shadow-medium: 0 12px 28px rgba(11, 31, 58, 0.14);
+  --shadow-large: 0 22px 56px rgba(11, 31, 58, 0.2);
+
+  /* Focus */
+  --focus-ring: 0 0 0 2px #F4F8FC, 0 0 0 5px #0D9488;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 88px;
+}

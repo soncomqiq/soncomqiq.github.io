@@ -1,0 +1,180 @@
+export const th = {
+  nav: {
+    home: 'หน้าแรก',
+    projects: 'ผลงาน',
+    services: 'บริการ',
+    contact: 'ติดต่อ',
+  },
+  hero: {
+    headline: 'เว็บไซต์และเว็บแอปที่ช่วยให้ธุรกิจเติบโต',
+    subtext:
+      'วิศวกรซอฟต์แวร์ ประสบการณ์ 7 ปีด้าน React, Spring Boot, ฐานข้อมูล และ Microservices พร้อมรับงาน Freelance และงานสอน/อบรมองค์กร',
+    cta: 'ขอใบเสนอราคา',
+    ctaSecondary: 'ดูผลงาน',
+  },
+  credibility: {
+    years: 'ประสบการณ์ 7 ปี',
+    stack: 'React + Spring Boot',
+    arch: 'Microservices',
+    teaching: 'สอนเทคโนโลยี',
+  },
+  projects: {
+    title: 'ผลงานที่คัดมา',
+    ev: {
+      name: 'แพลตฟอร์ม E-Commerce รถ EV',
+      problem: 'บริษัทรถไฟฟ้าต้องการร้านค้าออนไลน์ที่รองรับการเติบโตและแสดงสต็อกแบบ Real-time',
+      build: 'ออกแบบ Microservices สำหรับระบบสินค้า คำสั่งซื้อ และชำระเงิน',
+      stack: 'Spring Boot, PostgreSQL, React',
+      role: 'Senior Full-Stack Developer',
+      outcome: 'แก้ปัญหา OOM และลด Latency ของ API ได้อย่างชัดเจน',
+    },
+    strategy: {
+      name: 'STRategy — วิเคราะห์ DNA สำหรับนิติวิทยาศาสตร์',
+      problem: 'แล็บนิติวิทยาศาสตร์ต้องการเครื่องมือยุคใหม่สำหรับเก็บและวิเคราะห์ข้อมูล Short Tandem Repeat จาก NGS',
+      build: 'สร้างเว็บแอป Full-stack พร้อม Visualization แบบ Interactive และ Pipeline วิเคราะห์ที่ต่อขยายได้',
+      stack: 'React, Spring Boot, Bioinformatics pipelines',
+      role: 'Lead Developer (วิทยานิพนธ์ ป.โท)',
+      outcome: 'ตีพิมพ์ใน PLOS ONE และเปิดเป็น Open-source ที่ใช้งานจริง',
+    },
+    trading: {
+      name: 'แพลตฟอร์มเทรดสกุลเงินระดับโลก',
+      problem: 'ระบบ Trading UI เดิมเป็น Java Applet ที่ล้าสมัย ต้องยกเครื่องให้ทันสมัย',
+      build: 'ย้ายระบบไป Angular พร้อมปรับปรุงประสิทธิภาพและเพิ่มฟีเจอร์ใหม่',
+      stack: 'Angular, Java, Performance optimization',
+      role: 'Senior Software Engineer',
+      outcome: 'ลด Latency ฝั่ง Frontend ได้มาก พร้อมส่งมอบฟีเจอร์เทรดใหม่',
+    },
+  },
+  services: {
+    title: 'บริการ',
+    website: {
+      name: 'สร้างเว็บไซต์ธุรกิจ',
+      description: 'เว็บไซต์ที่ออกแบบมาเพื่อดึงลูกค้าใหม่ และทำให้ธุรกิจคุณโตบนออนไลน์',
+      deliverables: [
+        'เว็บไซต์ Responsive ออกแบบเฉพาะ',
+        'ฟอร์มติดต่อ / Lead capture',
+        'ตั้งค่า SEO เบื้องต้น',
+        'ปรับแต่งความเร็ว',
+        'Deploy และเปิดใช้งาน',
+        'สอนใช้งานและส่งมอบ',
+      ],
+      pricing: 'เริ่มต้น ฿25,000',
+    },
+    webapp: {
+      name: 'Web App / เครื่องมือภายใน',
+      description: 'เว็บแอปและเครื่องมือภายในองค์กร สร้างด้วยสถาปัตยกรรมที่ทันสมัย',
+      deliverables: [
+        'วิเคราะห์ Requirement',
+        'ออกแบบ Architecture',
+        'พัฒนา Full-stack',
+        'ออกแบบฐานข้อมูล',
+        'ทดสอบและ Deploy',
+        'เอกสารและส่งมอบ',
+      ],
+      pricing: 'ขอใบเสนอราคา',
+    },
+    training: {
+      name: 'สอนและอบรม',
+      description: 'คอร์สสอนแบบลงมือทำจริง ครอบคลุม React, Spring Boot และการออกแบบฐานข้อมูล สำหรับทีมของคุณ',
+      trainingHighlight:
+        'จุดเด่น: สอนบน Future Skills, สอนในบริษัทการเงินและมหาวิทยาลัย (SAU, PIM), Mentor ที่ WeStride และ 4 Bootcamps (Thai Programmer Association)',
+      deliverables: [
+        'ออกแบบหลักสูตร',
+        'สอนสด',
+        'แบบฝึกหัดและโปรเจกต์',
+        'สไลด์และเอกสารอ้างอิง',
+        'ถาม-ตอบ และ Code review',
+      ],
+      pricing: 'ขอใบเสนอราคา',
+    },
+  },
+  experience: {
+    title: 'ประสบการณ์ทำงาน',
+    roles: [
+      {
+        title: 'Advanced Software Engineer',
+        company: 'KASIKORN Business-Technology Group (KBTG)',
+        period: '2024 – ปัจจุบัน',
+        highlight: '',
+      },
+      {
+        title: 'Senior Full-Stack Developer',
+        company: 'Deftdev Tech',
+        period: '2024',
+        highlight: 'แพลตฟอร์ม E-Commerce รถ EV แก้ปัญหา OOM และ Latency',
+      },
+      {
+        title: 'Senior Software Engineer',
+        company: 'London Stock Exchange Group',
+        period: '2022 – 2024',
+        highlight: 'ย้ายระบบเทรดจาก Java Applet ไป Angular ลด Latency ได้ชัดเจน',
+      },
+      {
+        title: 'Software Engineer',
+        company: 'Ascend Commerce',
+        period: '2021 – 2022',
+        highlight: 'Microservices แพลตฟอร์มส่งอาหาร ใช้ Spring Boot, MongoDB, Elasticsearch',
+      },
+      {
+        title: 'Full-Stack Developer / Lead Instructor',
+        company: 'Buzzfreeze',
+        period: '2019 – 2020',
+        highlight: 'สอน React, Node.js, ฐานข้อมูล และสร้างเว็บโปรเจกต์ให้บริษัท',
+      },
+    ],
+  },
+  education: {
+    title: 'การศึกษา',
+    degrees: [
+      {
+        degree: 'วศ.ม. วิศวกรรมคอมพิวเตอร์',
+        school: 'จุฬาลงกรณ์มหาวิทยาลัย',
+        period: '2020 – 2023',
+        note: 'ตีพิมพ์งานวิจัยใน PLOS ONE (STRategy)',
+      },
+      {
+        degree: 'วศ.บ. วิศวกรรมคอมพิวเตอร์',
+        school: 'จุฬาลงกรณ์มหาวิทยาลัย',
+        period: '2015 – 2019',
+        note: '',
+      },
+    ],
+  },
+  teaching: {
+    title: 'สอนและเป็นเมนทอร์',
+    summary:
+      'สอนแบบลงมือทำจริง ให้ทั้งคนเรียนออนไลน์ นักศึกษามหาวิทยาลัย และทีมในองค์กรการเงิน',
+    highlightsTitle: 'ไฮไลต์',
+    highlights: [
+      'สอนบนแพลตฟอร์ม Future Skills',
+      'สอนให้บริษัทด้านการเงิน',
+      'สอนในมหาวิทยาลัย (SAU, สถาบันการจัดการปัญญาภิวัฒน์)',
+      'เป็น Mentor ที่ WeStride',
+    ],
+    metricsTitle: 'ภาพรวมการสอน',
+    metrics: [
+      { label: 'Bootcamp', value: '4 Bootcamps (Thai Programmer Association)' },
+      { label: 'อุตสาหกรรม', value: 'การเงิน + การศึกษา' },
+      { label: 'บทบาท', value: 'Instructor + Mentor' },
+    ],
+    topicsTitle: 'หัวข้อที่สอน',
+    topics: ['Database Design', 'React', 'Spring Boot', 'Node.js', 'SQL'],
+    bootcampTitle: '4 Bootcamps (Thai Programmer Association)',
+    bootcampValue: 'ผู้สอนหลัก',
+    cta: 'ติดต่อเรื่องอบรมทีม',
+  },
+  contact: {
+    title: 'ติดต่อ',
+    subtitle: 'มีโปรเจกต์ในใจ หรืออยากให้สอนทีม? ทักมาได้เลย',
+    emailLabel: 'อีเมล',
+    emailValue: 'nuttachai.ku@hotmail.com',
+    phoneLabel: 'โทร',
+    phoneValue: '0863753485',
+    email: 'ส่งอีเมล',
+    linkedin: 'เชื่อมต่อบน LinkedIn',
+    response: 'ตอบกลับภายใน 48 ชั่วโมง',
+  },
+  footer: {
+    copyright: '© 2026 ณัฐชัย กุลธรรมนิตย์ สงวนลิขสิทธิ์',
+  },
+} as const;

@@ -1,0 +1,180 @@
+export const en = {
+  nav: {
+    home: 'Home',
+    projects: 'Projects',
+    services: 'Services',
+    contact: 'Contact',
+  },
+  hero: {
+    headline: 'high-performing websites and web applications that help businesses grow.',
+    subtext:
+      'Senior full-stack engineer with 7 years of experience in React, Spring Boot, databases, and microservices. Available for freelance projects and technical training.',
+    cta: 'Request a Website Quote',
+    ctaSecondary: 'View My Work',
+  },
+  credibility: {
+    years: '7 Years Experience',
+    stack: 'React + Spring Boot',
+    arch: 'Microservices',
+    teaching: 'Technical Instructor',
+  },
+  projects: {
+    title: 'Featured Projects',
+    ev: {
+      name: 'EV E-Commerce Platform',
+      problem: 'An electric vehicle company needed a scalable online storefront with real-time inventory.',
+      build: 'Designed and developed microservices handling product catalog, orders, and payments.',
+      stack: 'Spring Boot, PostgreSQL, React',
+      role: 'Senior Full-Stack Developer',
+      outcome: 'Resolved critical OOM errors and reduced API latency significantly.',
+    },
+    strategy: {
+      name: 'STRategy — Forensic DNA Analysis',
+      problem: 'Forensic labs needed a modern tool to collect and analyze short tandem repeat data from next-gen sequencing.',
+      build: 'Built a full-stack web platform with interactive visualization and extensible analysis pipelines.',
+      stack: 'React, Spring Boot, Bioinformatics pipelines',
+      role: 'Lead Developer (Master\'s thesis)',
+      outcome: 'Published in PLOS ONE; open-source and used by research labs.',
+    },
+    trading: {
+      name: 'Global Currency Trading Platform',
+      problem: 'A legacy Java Applet trading UI needed modernization for a global financial institution.',
+      build: 'Migrated the platform to Angular with improved performance and new feature delivery.',
+      stack: 'Angular, Java, Performance optimization',
+      role: 'Senior Software Engineer',
+      outcome: 'Significantly reduced frontend latency and delivered new trading capabilities.',
+    },
+  },
+  services: {
+    title: 'Services',
+    website: {
+      name: 'Business Website Build',
+      description: 'Custom responsive websites designed to generate leads and grow your business online.',
+      deliverables: [
+        'Custom responsive website',
+        'Lead capture / contact form',
+        'Basic SEO setup',
+        'Performance optimization',
+        'Deployment & launch',
+        'Handover training session',
+      ],
+      pricing: 'Starting at ฿25,000',
+    },
+    webapp: {
+      name: 'Web App / Internal Tool',
+      description: 'Full-stack web applications and internal tools built with modern architecture.',
+      deliverables: [
+        'Requirements analysis',
+        'System architecture design',
+        'Full-stack development',
+        'Database design',
+        'Testing & deployment',
+        'Documentation & handover',
+      ],
+      pricing: 'Custom quote',
+    },
+    training: {
+      name: 'Technical Training',
+      description: 'Hands-on workshops and courses in React, Spring Boot, and database design for your engineering team.',
+      trainingHighlight:
+        'Highlights: Future Skills instructor, classes for financial companies and universities (SAU, PIM), mentor at WeStride, and 4 Bootcamps (Thai Programmer Association).',
+      deliverables: [
+        'Curriculum design',
+        'Live instruction',
+        'Practice exercises & projects',
+        'Slides & reference materials',
+        'Q&A and code review sessions',
+      ],
+      pricing: 'Custom quote',
+    },
+  },
+  experience: {
+    title: 'Work Experience',
+    roles: [
+      {
+        title: 'Advanced Software Engineer',
+        company: 'KASIKORN Business-Technology Group (KBTG)',
+        period: '2024 – Present',
+        highlight: '',
+      },
+      {
+        title: 'Senior Full-Stack Developer',
+        company: 'Deftdev Tech',
+        period: '2024',
+        highlight: 'EV e-commerce platform; resolved OOM and latency issues.',
+      },
+      {
+        title: 'Senior Software Engineer',
+        company: 'London Stock Exchange Group',
+        period: '2022 – 2024',
+        highlight: 'Migrated global trading platform from Java Applet to Angular; reduced latency.',
+      },
+      {
+        title: 'Software Engineer',
+        company: 'Ascend Commerce',
+        period: '2021 – 2022',
+        highlight: 'Food delivery microservices with Spring Boot, MongoDB, Elasticsearch.',
+      },
+      {
+        title: 'Full-Stack Developer / Lead Instructor',
+        company: 'Buzzfreeze',
+        period: '2019 – 2020',
+        highlight: 'Taught React, Node.js, and database courses; built company web projects.',
+      },
+    ],
+  },
+  education: {
+    title: 'Education',
+    degrees: [
+      {
+        degree: 'M.Eng. Computer Engineering',
+        school: 'Chulalongkorn University',
+        period: '2020 – 2023',
+        note: 'Published research in PLOS ONE (STRategy).',
+      },
+      {
+        degree: 'B.Eng. Computer Engineering',
+        school: 'Chulalongkorn University',
+        period: '2015 – 2019',
+        note: '',
+      },
+    ],
+  },
+  teaching: {
+    title: 'Teaching & Mentorship',
+    summary:
+      'Delivered technical classes for online learners, universities, and financial organizations with hands-on, project-based training.',
+    highlightsTitle: 'Highlights',
+    highlights: [
+      'Instructor on Future Skills platform',
+      'Delivered classes in financial companies',
+      'Delivered university classes (including SAU and PIM)',
+      'Mentor at WeStride',
+    ],
+    metricsTitle: 'Training footprint',
+    metrics: [
+      { label: 'Bootcamp', value: '4 Bootcamps (Thai Programmer Association)' },
+      { label: 'Industries', value: 'Finance + Education' },
+      { label: 'Teaching roles', value: 'Instructor + Mentor' },
+    ],
+    topicsTitle: 'Topics taught',
+    topics: ['Database Design', 'React', 'Spring Boot', 'Node.js', 'SQL'],
+    bootcampTitle: '4 Bootcamps (Thai Programmer Association)',
+    bootcampValue: 'Lead instructor',
+    cta: 'Request team training',
+  },
+  contact: {
+    title: 'Get in Touch',
+    subtitle: 'Have a project in mind or want to discuss training for your team? Reach out directly.',
+    emailLabel: 'Email',
+    emailValue: 'nuttachai.ku@hotmail.com',
+    phoneLabel: 'Phone',
+    phoneValue: '0863753485',
+    email: 'Email me',
+    linkedin: 'Connect on LinkedIn',
+    response: 'I typically reply within 48 hours.',
+  },
+  footer: {
+    copyright: '© 2026 Nuttachai Kulthammanit. All rights reserved.',
+  },
+} as const;
