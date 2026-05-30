@@ -24,6 +24,13 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 820px) {
+  .inner {
+    gap: 12px;
+  }
 }
 
 .logo {
@@ -75,11 +82,17 @@
 }
 
 @media (max-width: 640px) {
+  .inner {
+    gap: 8px;
+  }
+
   .links {
-    gap: 14px;
+    gap: 12px;
+    flex-shrink: 0;
   }
 
   .links a {
     font-size: 13px;
+    white-space: nowrap;
   }
 }
