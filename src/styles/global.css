@@ -28,8 +28,13 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-bg);
   line-height: 1.7;
+  cursor: default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a, button {
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {
