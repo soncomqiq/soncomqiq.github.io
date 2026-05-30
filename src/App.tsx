@@ -9,7 +9,7 @@ import { Contact } from './features/Contact';
 export function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter basename="/gh-profile">
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />
