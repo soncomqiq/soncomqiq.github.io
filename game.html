@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Career Snake — Nuttachai Kulthammanit</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --border: #30363d;
+    --green: #3fb950;
+    --green-dim: #238636;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "SF Mono", "Fira Code", Consolas, monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .terminal {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    max-width: 480px;
+    width: 100%;
+  }
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #21262d;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+  .titlebar span {
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .hud {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hud b { color: var(--green); }
+  .hud .lvl { color: var(--accent); }
+  .stage { position: relative; }
+  canvas {
+    display: block;
+    width: 100%;
+    touch-action: none;
+    background: var(--bg);
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 17, 23, 0.88);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    gap: 12px;
+  }
+  .overlay.hidden { display: none; }
+  .overlay h1 { color: var(--green); font-size: 20px; }
+  .overlay p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .overlay .final { color: var(--text); font-size: 14px; }
+  .btn {
+    margin-top: 8px;
+    padding: 10px 24px;
+    background: var(--green-dim);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--green); }
+  .toast {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%) translateY(80px);
+    background: #1c2f1e;
+    border: 1px solid var(--green-dim);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 11px;
+    color: var(--green);
+    white-space: nowrap;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+    max-width: 92%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .footer {
+    padding: 10px 14px;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="terminal">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <span>nuttachai@portfolio: ~/career-snake</span>
+  </div>
+  <div class="hud">
+    <div>SCORE <b id="score">0</b></div>
+    <div class="lvl" id="level">2015 · Chulalongkorn</div>
+    <div>BEST <b id="best">0</b></div>
+  </div>
+  <div class="stage">
+    <canvas id="game" width="440" height="440"></canvas>
+    <div class="overlay" id="overlay">
+      <h1>$ ./career-snake</h1>
+      <p>
+        Collect the tech stack to replay Nuttachai's career,<br>
+        from Chulalongkorn (2015) to KBTG (present).<br><br>
+        ⌨ Arrow keys / WASD &nbsp;·&nbsp; 📱 Swipe
+      </p>
+      <button class="btn" id="startBtn">▶ run</button>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+  <div class="footer">
+    Built by <a href="https://linkedin.com/in/nuttachai-kulthammanit" target="_blank" rel="noopener">Nuttachai Kulthammanit</a> — Advanced Software Engineer
+  </div>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const COLS = 22, ROWS = 22, CELL = 20;
+  const SKILLS = [
+    { label: "JS",    color: "#f7df1e", dark: true  },
+    { label: "SQL",   color: "#4a9eff", dark: false },
+    { label: "React", color: "#61dafb", dark: true  },
+    { label: "Spring",color: "#6db33f", dark: false },
+    { label: "Node",  color: "#8cc84b", dark: true  },
+    { label: "DB",    color: "#e8618c", dark: false },
+    { label: "Docker",color: "#2496ed", dark: false },
+    { label: "Redis", color: "#dc382d", dark: false },
+    { label: "µSvc",  color: "#b48ead", dark: false }
+  ];
+  // Career timeline: one milestone unlocked per level.
+  const MILESTONES = [
+    { tag: "2015 · Chulalongkorn",  msg: "🎓 B.Eng Computer Engineering @ Chulalongkorn" },
+    { tag: "2019 · Buzzfreeze",     msg: "👨‍🏫 Full-stack Dev & Lead Instructor — taught Node/React to hundreds" },
+    { tag: "2021 · Ascend",         msg: "🍜 Built food-delivery microservices — Spring Boot, MongoDB, Elasticsearch" },
+    { tag: "2022 · LSEG",           msg: "💱 Migrated a global currency trading platform to Angular" },
+    { tag: "2023 · M.Eng + PLOS",   msg: "🧬 M.Eng + published STRategy in PLOS ONE" },
+    { tag: "2024 · Deftdev",        msg: "🚗 EV e-commerce platform — crushed OOM & latency issues" },
+    { tag: "2024 · KBTG (now)",     msg: "🏦 Advanced Software Engineer @ KBTG — you reached the present!" }
+  ];
+  const SKILLS_PER_LEVEL = 3;
+  const BASE_TICK = 150, MIN_TICK = 70, TICK_STEP = 12;
+
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+  const scoreEl = document.getElementById("score");
+  const bestEl = document.getElementById("best");
+  const levelEl = document.getElementById("level");
+  const overlay = document.getElementById("overlay");
+  const startBtn = document.getElementById("startBtn");
+  const toast = document.getElementById("toast");
+
+  // Crisp rendering on retina displays.
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = COLS * CELL * dpr;
+  canvas.height = ROWS * CELL * dpr;
+  ctx.scale(dpr, dpr);
+
+  let snake, dir, dirQueue, food, score, eaten, level, tick, timer, running, best;
+  let toastTimer = null;
+
+  best = Number(localStorage.getItem("careerSnakeBest") || 0);
+  bestEl.textContent = best;
+
+  function reset() {
+    const cy = Math.floor(ROWS / 2);
+    snake = [{ x: 7, y: cy }, { x: 6, y: cy }, { x: 5, y: cy }];
+    dir = { x: 1, y: 0 };
+    dirQueue = [];
+    score = 0;
+    eaten = 0;
+    level = 0;
+    tick = BASE_TICK;
+    scoreEl.textContent = "0";
+    levelEl.textContent = MILESTONES[0].tag;
+    spawnFood();
+  }
+
+  function spawnFood() {
+    let x, y;
+    do {
+      x = Math.floor(Math.random() * COLS);
+      y = Math.floor(Math.random() * ROWS);
+    } while (snake.some(s => s.x === x && s.y === y));
+    food = { x, y, skill: SKILLS[Math.floor(Math.random() * SKILLS.length)] };
+  }
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
+  }
+
+  function step() {
+    if (dirQueue.length) dir = dirQueue.shift();
+    const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+
+    const hitWall = head.x < 0 || head.y < 0 || head.x >= COLS || head.y >= ROWS;
+    const hitSelf = snake.some(s => s.x === head.x && s.y === head.y);
+    if (hitWall || hitSelf) return gameOver();
+
+    snake.unshift(head);
+
+    if (head.x === food.x && head.y === food.y) {
+      score += 10;
+      eaten++;
+      scoreEl.textContent = score;
+      showToast(`+10 ${food.skill.label}`);
+
+      if (eaten % SKILLS_PER_LEVEL === 0 && level < MILESTONES.length - 1) {
+        level++;
+        tick = Math.max(MIN_TICK, tick - TICK_STEP);
+        levelEl.textContent = MILESTONES[level].tag;
+        showToast(MILESTONES[level].msg);
+        clearInterval(timer);
+        timer = setInterval(step, tick);
+      }
+      spawnFood();
+    } else {
+      snake.pop();
+    }
+    draw();
+  }
+
+  function draw() {
+    const w = COLS * CELL, h = ROWS * CELL;
+    ctx.fillStyle = "#0d1117";
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.strokeStyle = "rgba(48, 54, 61, 0.35)";
+    ctx.lineWidth = 1;
+    for (let i = 1; i < COLS; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * CELL, 0); ctx.lineTo(i * CELL, h);
+      ctx.moveTo(0, i * CELL); ctx.lineTo(w, i * CELL);
+      ctx.stroke();
+    }
+
+    // Food chip
+    const fx = food.x * CELL, fy = food.y * CELL;
+    ctx.fillStyle = food.skill.color;
+    roundRect(fx + 1, fy + 1, CELL - 2, CELL - 2, 5);
+    ctx.fill();
+    ctx.fillStyle = food.skill.dark ? "#0d1117" : "#ffffff";
+    ctx.font = `bold ${food.skill.label.length > 3 ? 5.5 : 7}px monospace`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(food.skill.label, fx + CELL / 2, fy + CELL / 2 + 0.5);
+
+    // Snake
+    snake.forEach((s, i) => {
+      const t = i / snake.length;
+      ctx.fillStyle = i === 0 ? "#3fb950" : `rgba(63, 185, 80, ${0.85 - t * 0.55})`;
+      roundRect(s.x * CELL + 1.5, s.y * CELL + 1.5, CELL - 3, CELL - 3, 4);
+      ctx.fill();
+    });
+
+    // Eyes on head
+    const hd = snake[0];
+    ctx.fillStyle = "#0d1117";
+    const ex = hd.x * CELL + CELL / 2 + dir.x * 4;
+    const ey = hd.y * CELL + CELL / 2 + dir.y * 4;
+    const px = dir.y !== 0 ? 3.5 : 0, py = dir.x !== 0 ? 3.5 : 0;
+    ctx.beginPath();
+    ctx.arc(ex - px, ey - py, 1.6, 0, Math.PI * 2);
+    ctx.arc(ex + px, ey + py, 1.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function start() {
+    reset();
+    overlay.classList.add("hidden");
+    running = true;
+    draw();
+    clearInterval(timer);
+    timer = setInterval(step, tick);
+  }
+
+  function gameOver() {
+    running = false;
+    clearInterval(timer);
+    if (score > best) {
+      best = score;
+      localStorage.setItem("careerSnakeBest", best);
+      bestEl.textContent = best;
+    }
+    overlay.innerHTML = `
+      <h1>segmentation fault 🐍</h1>
+      <p class="final">Score: ${score} · Reached: ${MILESTONES[level].tag}</p>
+      <p>${level === MILESTONES.length - 1
+        ? "You replayed the whole career — now go hire this guy."
+        : "The journey continues... try to reach KBTG (2024)!"}</p>
+      <button class="btn" id="startBtn">↻ restart</button>`;
+    overlay.classList.remove("hidden");
+    overlay.querySelector(".btn").addEventListener("click", start);
+  }
+
+  function queueDir(x, y) {
+    const last = dirQueue.length ? dirQueue[dirQueue.length - 1] : dir;
+    if (last.x === -x && last.y === -y) return; // no instant reverse
+    if (last.x === x && last.y === y) return;
+    dirQueue.push({ x, y });
+  }
+
+  const KEYS = {
+    ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0],
+    w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0],
+    W: [0, -1], S: [0, 1], A: [-1, 0], D: [1, 0]
+  };
+  document.addEventListener("keydown", e => {
+    if (KEYS[e.key]) {
+      e.preventDefault();
+      if (running) queueDir(...KEYS[e.key]);
+    } else if ((e.key === "Enter" || e.key === " ") && !running) {
+      e.preventDefault();
+      start();
+    }
+  });
+
+  // Swipe controls
+  let touchStart = null;
+  canvas.addEventListener("touchstart", e => {
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+  canvas.addEventListener("touchmove", e => {
+    if (!touchStart || !running) return;
+    const dx = e.touches[0].clientX - touchStart.x;
+    const dy = e.touches[0].clientY - touchStart.y;
+    if (Math.abs(dx) < 24 && Math.abs(dy) < 24) return;
+    if (Math.abs(dx) > Math.abs(dy)) queueDir(Math.sign(dx), 0);
+    else queueDir(0, Math.sign(dy));
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+
+  startBtn.addEventListener("click", start);
+
+  reset();
+  draw();
+})();
+</script>
+</body>
+</html>

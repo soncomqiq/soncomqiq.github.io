@@ -1,16 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nuttachai Kulthammanit | Full-Stack Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nuttachai Kulthammanit — Software Engineer</title>
+<meta name="description" content="Portfolio of Nuttachai Kulthammanit, Advanced Software Engineer based in Bangkok. Java, JavaScript, Node, React, Spring Boot, Microservices." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<canvas id="matrix"></canvas>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div id="progress"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav id="nav">
+  <a class="logo" href="#top">nuttachai<span>.dev</span></a>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#experience">experience</a>
+    <a href="#skills">skills</a>
+    <a href="#education">education</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-tag">$ whoami</p>
+    <h1>Hi, I'm <span class="gradient">Nuttachai</span>.<br />I build things that scale.</h1>
+    <p class="typed-line"><span id="typed"></span><span class="cursor">|</span></p>
+    <p class="hero-desc">
+      Advanced Software Engineer at KBTG with 6+ years of experience designing
+      high-performance systems with Java, Spring Boot, Node, and React —
+      based in Bangkok, Thailand.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/nuttachai-kulthammanit" target="_blank" rel="noopener">LinkedIn →</a>
+      <button class="btn btn-ghost" id="play-game" type="button">🕹️ battle_city.exe</button>
+      <button class="btn btn-ghost" id="play-cop" type="button">🔫 virtua_cop.exe</button>
+      <button class="btn btn-ghost" id="play-shoot" type="button">🎯 destruction_mode.exe</button>
+    </div>
+    <div class="scroll-hint">▼ scroll</div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title" data-num="01.">about_me</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm an experienced software engineer with <strong>six years</strong> of
+          experience designing and developing innovative solutions using
+          <strong>Java, JavaScript, Node, React, and Spring Boot</strong>.
+        </p>
+        <p>
+          I'm committed to delivering high-quality products in collaborative
+          team environments — from global currency trading platforms at the
+          <strong>London Stock Exchange Group</strong> to financial advisory
+          tools at <strong>KBTG</strong>.
+        </p>
+        <p>
+          Beyond engineering, I've taught <strong>hundreds of students</strong>
+          as a lead instructor, driven by continuous learning and growth. I also
+          hold a Master's in Computer Engineering from Chulalongkorn University
+          and have published research in <em>PLOS ONE</em>.
+        </p>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-bar"><i></i><i></i><i></i><span>profile.json</span></div>
+        <div class="terminal-body">
+<span class="p">{</span><br />
+&nbsp;&nbsp;<span class="k">"name"</span><span class="p">:</span> <span class="s">"Nuttachai Kulthammanit"</span><span class="p">,</span><br />
+&nbsp;&nbsp;<span class="k">"role"</span><span class="p">:</span> <span class="s">"Advanced Software Engineer"</span><span class="p">,</span><br />
+&nbsp;&nbsp;<span class="k">"location"</span><span class="p">:</span> <span class="s">"Bangkok, TH"</span><span class="p">,</span><br />
+&nbsp;&nbsp;<span class="k">"experience_years"</span><span class="p">:</span> <span class="n">6</span><span class="p">,</span><br />
+&nbsp;&nbsp;<span class="k">"languages"</span><span class="p">:</span> <span class="p">[</span><span class="s">"th_native"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">],</span><br />
+&nbsp;&nbsp;<span class="k">"currently"</span><span class="p">:</span> <span class="s">"KBTG"</span><span class="p">,</span><br />
+&nbsp;&nbsp;<span class="k">"open_to_coffee"</span><span class="p">:</span> <span class="n">true</span><br />
+<span class="p">}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat reveal"><span class="stat-num" data-target="6" data-suffix="+">0</span><span class="stat-label">years of experience</span></div>
+    <div class="stat reveal"><span class="stat-num" data-target="5">0</span><span class="stat-label">companies</span></div>
+    <div class="stat reveal"><span class="stat-num" data-target="100" data-suffix="s">0</span><span class="stat-label">students taught</span></div>
+    <div class="stat reveal"><span class="stat-num" data-target="2">0</span><span class="stat-label">publications</span></div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="section-title" data-num="02.">experience</h2>
+    <div class="timeline">
+
+      <div class="job reveal">
+        <span class="job-period">2024.10 — PRESENT</span><span class="badge-current">● current</span>
+        <h3>Advanced Software Engineer</h3>
+        <div class="company">KASIKORN Business-Technology Group [KBTG]</div>
+        <div class="place">Bangkok, Thailand</div>
+        <ul>
+          <li>Contributed to the development of internal tools for financial advisors.</li>
+          <li>Designed and implemented new services within a microservices architecture to support evolving business needs.</li>
+          <li>Collaborated on system design and integration across multiple services.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <span class="job-period">2024.03 — 2024.09</span>
+        <h3>Senior Full-stack Developer</h3>
+        <div class="company">Deftdev Tech</div>
+        <div class="place">Bangkok, Thailand</div>
+        <ul>
+          <li>Designed, developed, and maintained an EV car e-commerce platform using microservices architecture with Spring Boot and PostgreSQL.</li>
+          <li>Resolved critical performance issues, including out-of-memory errors during database queries and high latency, significantly enhancing system performance.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <span class="job-period">2022.04 — 2024.02</span>
+        <h3>Senior Software Engineer</h3>
+        <div class="company">London Stock Exchange Group</div>
+        <div class="place">Bangkok, Thailand</div>
+        <ul>
+          <li>Developed and migrated a global currency trading platform from Java Applet to Angular.</li>
+          <li>Planned and delivered new requirements, including feasibility analysis, performance evaluation, and risk forecasting.</li>
+          <li>Successfully resolved critical backend performance issues, significantly reducing latency.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <span class="job-period">2021.02 — 2022.03</span>
+        <h3>Software Engineer</h3>
+        <div class="company">Ascend Commerce</div>
+        <div class="place">Bangkok, Thailand</div>
+        <ul>
+          <li>Developed and maintained microservices for a food delivery platform using Spring Boot, MongoDB, and Elasticsearch.</li>
+          <li>Authored comprehensive documentation detailing programming workflows and system operations.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <span class="job-period">2019.06 — 2020.12</span>
+        <h3>Full-stack Developer / Lead Instructor</h3>
+        <div class="company">Buzzfreeze (Contractor)</div>
+        <div class="place">Bangkok, Thailand</div>
+        <ul>
+          <li>Designed and taught NodeJS, ReactJS, and database design courses to hundreds of online and offline students.</li>
+          <li>Developed slides, exams, and instructional videos for comprehensive learning.</li>
+          <li>Assisted in developing company web projects, enhancing functionality and user experience.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title" data-num="03.">skills</h2>
+    <div class="skills-grid">
+      <div class="skill reveal"><span class="dot"></span>JavaScript</div>
+      <div class="skill reveal"><span class="dot"></span>React</div>
+      <div class="skill reveal"><span class="dot"></span>Node.js</div>
+      <div class="skill reveal"><span class="dot"></span>Spring Boot</div>
+      <div class="skill reveal"><span class="dot"></span>SQL</div>
+      <div class="skill reveal"><span class="dot"></span>Database Design</div>
+      <div class="skill reveal"><span class="dot"></span>Microservices</div>
+      <div class="skill reveal"><span class="dot"></span>Docker</div>
+      <div class="skill reveal"><span class="dot"></span>Redis</div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & PUBLICATIONS -->
+  <section id="education">
+    <h2 class="section-title" data-num="04.">education_&_research</h2>
+    <div class="cards-2">
+      <div class="card reveal">
+        <span class="card-tag">M.Eng — 2020 · 2023</span>
+        <h3>Master of Engineering: Computer Engineering</h3>
+        <p>Chulalongkorn University, Bangkok</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-tag">B.Eng — 2015 · 2019</span>
+        <h3>Bachelor of Engineering: Computer Engineering</h3>
+        <p>Chulalongkorn University, Bangkok</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-tag">PUBLICATION — PLOS ONE, 2023</span>
+        <h3>STRategy: A support system for collecting and analyzing next-generation sequencing data of short tandem repeats for forensic science</h3>
+        <p>Kulthammanit, N., Sathirapatya, T., Sukawutthiya, P., Noh, H., Vongpaisarnsin, K., &amp; Wichadakul, D. — <em>PLOS ONE</em>, 18(7), e0282551.</p>
+        <a href="https://doi.org/10.1371/journal.pone.0282551" target="_blank" rel="noopener">doi.org/10.1371/journal.pone.0282551 →</a>
+      </div>
+      <div class="card reveal">
+        <span class="card-tag">PUBLICATION — SUBMITTED</span>
+        <h3>Sentiment Analysis on Cannabis Legalization on Twitter</h3>
+        <p>Tripornkanokrat, S., Boonkanit, K., Kulthammanit, N., &amp; Suwatvanich, V. — <em>SAU Journal of Science &amp; Technology</em> (manuscript submitted for publication).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2 class="reveal">Let's build something <span style="background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">great together</span>.</h2>
+    <p class="reveal">
+      Whether you have a project in mind, a role to fill, or just want to talk
+      shop about microservices — my inbox is always open.
+    </p>
+    <div class="contact-links reveal">
+      <a class="btn btn-primary" href="mailto:nuttachai.ku@hotmail.com">nuttachai.ku@hotmail.com</a>
+      <a class="btn btn-ghost" href="tel:+66863753485">(+66) 86 375 3485</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/nuttachai-kulthammanit" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- CHAT WIDGET -->
+<div id="chat-panel" role="dialog" aria-label="Profile chat">
+  <div class="chat-header">
+    <span class="status-dot"></span>
+    <div><b>nutt_bot</b><small>ask me anything about Nuttachai</small></div>
+    <button id="chat-close" aria-label="Close chat">✕</button>
+  </div>
+  <div id="chat-body"></div>
+  <form id="chat-form" autocomplete="off">
+    <input id="chat-input" type="text" placeholder="Ask about experience, skills…" maxlength="200" />
+    <button id="chat-send" type="submit" aria-label="Send">→</button>
+  </form>
+</div>
+<button id="chat-fab" aria-label="Open profile chat"><span class="ping"></span>💬</button>
+
+<!-- BATTLE CITY: PROFILE SIEGE -->
+<div id="game-overlay" role="dialog" aria-label="Battle City game">
+  <canvas id="game-canvas"></canvas>
+  <div id="game-hud">
+    <span>WAVE <b id="g-stage">1</b></span>
+    <span>SCORE <b id="g-score">0</b></span>
+    <span>♥ <b id="g-lives">5</b></span>
+    <span>⭐ <b id="g-pwr">1</b></span>
+    <span>🐛 <b id="g-left">4</b></span>
+    <span id="game-hint">wasd/arrows · space</span>
+    <button id="game-quit" type="button">✕ quit</button>
+  </div>
+  <div id="game-msg">
+    <h3></h3>
+    <p></p>
+    <button class="btn btn-primary" id="game-again" type="button">↻ play again</button>
+  </div>
+  <div id="game-touch">
+    <div class="dpad">
+      <button class="u" type="button" data-dir="up">▲</button>
+      <button class="l" type="button" data-dir="left">◀</button>
+      <button class="r" type="button" data-dir="right">▶</button>
+      <button class="d" type="button" data-dir="down">▼</button>
+    </div>
+    <button id="fire-btn" type="button">🔥</button>
+  </div>
+</div>
+
+<!-- VIRTUA COP: BUG PATROL -->
+<div id="cop-overlay" role="dialog" aria-label="Virtua Cop game">
+  <canvas id="cop-canvas"></canvas>
+  <div id="cop-hud">
+    <span>AREA <b id="c-area">1</b></span>
+    <span>SCORE <b id="c-score">0</b></span>
+    <span id="c-ammo">▮▮▮▮▮▮</span>
+    <span id="c-health">♥♥♥♥♥</span>
+    <span id="cop-hint">click shoot · R reload · 📁 = intel!</span>
+    <button id="cop-quit" type="button">✕ quit</button>
+  </div>
+  <div id="cop-banner"></div>
+  <div id="cop-msg">
+    <h3></h3>
+    <p></p>
+    <button class="btn btn-primary" id="cop-again" type="button">↻ new case</button>
+  </div>
+</div>
+
+<!-- DESTRUCTION MODE -->
+<div id="shoot-overlay" role="dialog" aria-label="Destruction mode">
+  <canvas id="shoot-canvas"></canvas>
+  <div id="shoot-hud">
+    <span>SHOTS <b id="s-shots">0</b></span>
+    <span>BROKEN <b id="s-broken">0/0</b></span>
+    <span id="shoot-hint">click shoot · scroll to roam</span>
+    <button id="shoot-fix" type="button">🔧 fix all</button>
+    <button id="shoot-quit" type="button">✕ quit</button>
+  </div>
+</div>
+
+<div id="fact-toast"></div>
+
+<footer>
+  designed &amp; built with <span class="heart">♥</span> by nuttachai kulthammanit · bangkok, thailand
+  <br /><span class="konami-hint">psst — try ↑ ↑ ↓ ↓ ← → ← → B A</span>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
 </html>

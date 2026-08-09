@@ -1,0 +1,92 @@
+---------------------------
+Nuttachai Kulthammanit
+---------------------------
+Occupation: Advanced Software Engineer 
+Nationality: Thai 
+Date of birth: 1996-11-24 
+Address: Bangkok 10400 
+Phone: (+66) 863753485 
+Email: nuttachai.ku@hotmail.com 
+Social links, website: linkedin.com/in/nuttachai-kulthammanit 
+
+        
+//  Objective //
+        
+<div style="text-align: left;">Experienced Software Engineer with six years of experience in designing and developing innovative solutions using Java, JavaScript, Node, React, and Spring Boot. Committed to delivering high-quality products in collaborative team environments. Additionally, I have experience as an instructor, driven by continuous learning and growth.</div>
+            
+//  Experience //
+        
+_ Advanced Software Engineer _
+KASIKORN Business-Technology Group [KBTG]
+Bangkok, Thailand
+2024-10 - missing translation: en-US|Present
+<ul class="suggestions-description"><li class="suggestion-description">Contributed to the development of internal tools for financial advisors.</li><li class="suggestion-description">Designed and implemented new services within a microservices architecture to support evolving business needs.</li><li class="suggestion-description">Collaborated on system design and integration across multiple services.</li></ul>
+            
+_ Senior full-stack developer _
+Deftdev tech
+Bangkok, Thailand
+2024-03 - 2024-09
+<div><ul><li>Designed, developed, and maintained an EV car e-commerce platform using microservices architecture with Spring Boot and PostgreSQL.</li><li>Resolved critical performance issues, including out-of-memory errors during database queries and high latency, significantly enhancing system performance.</li></ul></div>
+            
+_ Senior Software Engineer _
+London Stock Exchange Group
+Bangkok, Thailand
+2022-04 - 2024-02
+<ul><li>Developed and migrated a global currency trading platform from Java Applet to Angular.</li><li>Planned and delivered new requirements, including feasibility analysis, performance evaluation, and risk forecasting.</li><li>Successfully resolved critical backend performance issues, significantly reducing latency.</li></ul>
+            
+_ Software Engineer _
+Ascend Commerce 
+Bangkok, Thailand
+2021-02 - 2022-03
+<ul><li>Developed and maintained microservices for a food delivery platform using Spring Boot, MongoDB, and Elasticsearch.</li><li>Authored comprehensive documentation detailing programming workflows and system operations.<br></li></ul>
+            
+_ Full-stack Developer / Lead Instructor  _
+Buzzfreeze (Contractor)
+Bangkok, Thailand
+2019-06 - 2020-12
+<ul><li>Designed and taught NodeJS, ReactJS, and database design courses to hundreds of online and offline students.</li><li>Developed slides, exams, and instructional videos for comprehensive learning.</li><li>Assisted in developing company web projects, enhancing functionality and user experience.</li></ul>
+            
+//  Education //
+        
+_ Master of Engineering: Computer Engineering _
+Chulalongkorn University
+Bangkok, 2020 - 2023
+
+            
+_ Bachelor of Engineering: Computer Engineering _
+Chulalongkorn University
+Bangkok, 2015 - 2019
+
+            
+//  SKILLS //
+        
+• JavaScript
+            
+• SQL
+            
+• React
+            
+• Spring Boot
+            
+• Node
+            
+• Designing Database
+            
+• Docker
+            
+• Redis
+            
+• Microservices
+            
+//  Languages //
+        
+• Thai, native 
+            
+• English, intermediate 
+            
+//  Publications //
+        
+<div>Kulthammanit, N., Sathirapatya, T., Sukawutthiya, P., Noh, H., Vongpaisarnsin, K., &amp; Wichadakul, D. (2023, July). STRategy: A support system for collecting and analyzing next-generation sequencing data of short tandem repeats for forensic science. <i>PLOS ONE</i>, 18(7), e0282551. https://doi.org/10.1371/journal.pone.0282551</div>
+            
+<div>Tripornkanokrat, S., Boonkanit, K., Kulthammanit, N., &amp; Suwatvanich. V. (Manuscript submitted for publication). Sentiment Analysis on Cannabis Legalization on Twitter. <i>SAU JOURNAL OF SCIENCE &amp; TECHNOLOGY</i>.<br></div>
+            
