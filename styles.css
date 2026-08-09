@@ -906,7 +906,27 @@ footer .heart { color: var(--accent); }
     padding: 18px 8px;
   }
   .stat-tooltip {
-    width: min(320px, 88vw);
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    transform: none;
+    max-height: 0;
+    padding: 0 10px;
+    border-width: 0;
+    box-shadow: none;
+    overflow: hidden;
+  }
+  .stat-clickable:hover .stat-tooltip,
+  .stat-clickable:focus-visible .stat-tooltip {
+    opacity: 0;
+    max-height: 0;
+  }
+  .stat-clickable.open .stat-tooltip {
+    opacity: 1;
+    max-height: 260px;
+    padding: 10px;
+    border-width: 1px;
+    transform: none;
   }
   .stat-num {
     font-size: 1.9rem;
