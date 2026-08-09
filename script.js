@@ -129,6 +129,27 @@ window.addEventListener("scroll", () => {
 
 const finePointer = matchMedia("(pointer: fine)").matches;
 
+function calculateExperienceYears(startYear, startMonth) {
+  const now = new Date();
+  const start = new Date(startYear, startMonth - 1, 1);
+  const monthDiff = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  return Math.max(0, monthDiff / 12);
+}
+
+const experienceYears = calculateExperienceYears(2019, 6);
+const experienceYearsRounded = Math.floor(experienceYears);
+const experienceYearsDisplay = `${experienceYearsRounded}+`;
+
+const experienceCopyEl = document.getElementById("experience-years-copy");
+const experienceAboutEl = document.getElementById("experience-years-about");
+const experienceJsonEl = document.getElementById("experience-years-json");
+const experienceStatEl = document.getElementById("experience-years-stat");
+
+if (experienceCopyEl) experienceCopyEl.textContent = experienceYearsDisplay;
+if (experienceAboutEl) experienceAboutEl.textContent = `${experienceYearsRounded} years`;
+if (experienceJsonEl) experienceJsonEl.textContent = experienceYearsDisplay;
+if (experienceStatEl) experienceStatEl.dataset.target = String(experienceYearsRounded);
+
 /* ---- Custom cursor ---- */
 if (finePointer) {
   const dot = document.querySelector(".cursor-dot");
@@ -205,13 +226,15 @@ const counterObs = new IntersectionObserver(
       if (!entry.isIntersecting) return;
       counterObs.unobserve(entry.target);
       const el = entry.target;
-      const target = +el.dataset.target;
+      const target = Number(el.dataset.target);
+      const decimals = Number(el.dataset.decimals || 0);
       const suffix = el.dataset.suffix || "";
       const start = performance.now();
       (function tick(now) {
         const t = Math.min((now - start) / 1400, 1);
         const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(target * eased) + suffix;
+        const value = target * eased;
+        el.textContent = (decimals > 0 ? value.toFixed(decimals) : Math.round(value)) + suffix;
         if (t < 1) requestAnimationFrame(tick);
       })(start);
     });
@@ -219,6 +242,38 @@ const counterObs = new IntersectionObserver(
   { threshold: 0.5 }
 );
 document.querySelectorAll(".stat-num").forEach((el) => counterObs.observe(el));
+
+/* ---- Learners stat breakdown ---- */
+const learnersStatCard = document.getElementById("learners-stat-card");
+const learnersTooltip = document.getElementById("learners-tooltip");
+if (learnersStatCard && learnersTooltip) {
+  const setTooltipOpen = (open) => {
+    learnersStatCard.classList.toggle("open", open);
+    learnersStatCard.setAttribute("aria-expanded", open ? "true" : "false");
+    learnersTooltip.setAttribute("aria-hidden", open ? "false" : "true");
+  };
+
+  const toggleTooltip = () => {
+    const isOpen = learnersStatCard.classList.contains("open");
+    setTooltipOpen(!isOpen);
+  };
+
+  learnersStatCard.addEventListener("click", toggleTooltip);
+  learnersStatCard.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleTooltip();
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!learnersStatCard.contains(e.target)) setTooltipOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setTooltipOpen(false);
+  });
+}
 
 /* ---- Section-title scramble ---- */
 const scrambleChars = "!<>-_\\/[]{}=+*^?#____";
@@ -329,9 +384,9 @@ const KB = [
       "Hello! I\u2019m nutt_bot 🤖 — the resident expert on all things Nuttachai. What would you like to know?",
     ]) },
   { k: ["who", "about", "introduce", "summary", "himself", "objective"],
-    r: "Nuttachai is an <b>Advanced Software Engineer at KBTG</b> in Bangkok with <b>6+ years</b> of experience across fintech, trading, and e-commerce. He builds with Java, Spring Boot, Node, and React — and he\u2019s also taught hundreds of students as an instructor. 🎓" },
+    r: () => `Nuttachai is an <b>Advanced Software Engineer at KBTG</b> in Bangkok with <b>${experienceYearsDisplay} years</b> of experience across fintech, trading, and e-commerce. He builds with Java, Spring Boot, Node, and React — and he\u2019s also taught hundreds of students as an instructor. 🎓` },
   { k: ["experience", "career", "work", "worked", "history", "background", "companies", "jobs", "timeline"],
-    r: "Here\u2019s the career timeline 👇\n• <b>2024–now</b> · Advanced Software Engineer @ KBTG\n• <b>2024</b> · Senior Full-stack Dev @ Deftdev Tech\n• <b>2022–24</b> · Senior Software Engineer @ LSEG\n• <b>2021–22</b> · Software Engineer @ Ascend Commerce\n• <b>2019–20</b> · Full-stack Dev / Lead Instructor @ Buzzfreeze\nAsk me about any company for details!" },
+    r: "Here\u2019s the career timeline 👇\n• <b>2024–now</b> · Advanced Software Engineer @ KBTG\n• <b>2024</b> · Senior Full-stack Dev @ Deftdev Tech\n• <b>2022–24</b> · Senior Software Engineer @ LSEG\n• <b>2021–22</b> · Software Engineer @ Ascend Commerce\n• <b>2019–20</b> · Full-stack Dev / Lead Instructor @ Buzzfreeze\nTeaching track: <b>2023</b> · Course Instructor @ FutureSkill, plus ongoing part-time mentorship @ <b>WeStride</b>.\nAsk me about any role for details!" },
   { k: ["kbtg", "kasikorn", "current", "present", "now"],
     r: "Right now he\u2019s at <b>KASIKORN Business-Technology Group (KBTG)</b> 🏦 — building internal tools for financial advisors and designing new services within a microservices architecture." },
   { k: ["lseg", "london", "stock exchange", "trading", "currency"],
@@ -341,7 +396,7 @@ const KB = [
   { k: ["ascend", "food", "delivery"],
     r: "At <b>Ascend Commerce</b> (2021–2022) 🍜 he built microservices for a food delivery platform using Spring Boot, MongoDB, and Elasticsearch — plus wrote top-notch documentation." },
   { k: ["teach", "teacher", "instructor", "course", "students", "buzzfreeze", "mentor"],
-    r: "He\u2019s taught <b>hundreds of students</b> 🏫 as Lead Instructor at Buzzfreeze — NodeJS, ReactJS, and database design courses, complete with slides, exams, and video lessons." },
+    r: "He\u2019s taught <b>hundreds of students</b> 🏫 through roles across Buzzfreeze, FutureSkill, and WeStride — including online React courses, part-time on-site React and Spring Boot instruction at KBTG, live mentoring, recorded lessons, and practical software engineering guidance." },
   { k: ["skill", "skills", "stack", "tech", "technologies", "framework", "tools", "java", "react", "node", "spring", "docker", "redis", "sql"],
     r: "His toolbox 🧰\nJavaScript · React · Node.js · Spring Boot · SQL · Database Design · Microservices · Docker · Redis\nSweet spot: scalable backend systems with Java & Spring Boot." },
   { k: ["education", "degree", "university", "study", "studied", "master", "bachelor", "chula", "chulalongkorn"],
@@ -461,10 +516,10 @@ chatForm.addEventListener("submit", (e) => {
 
 /* ---- profile intel (shared by the games) ---- */
 const PROFILE_FACTS = [
-  "6+ years building with Java, Spring Boot, Node & React",
+  `${experienceYearsDisplay} years building with Java, Spring Boot, Node & React`,
   "Currently @ KBTG — building tools for financial advisors",
   "Migrated LSEG's currency trading platform from Java Applet to Angular",
-  "Taught 100s of students NodeJS & React as a lead instructor",
+  "Reached 1,000+ online learners through React courses",
   "Published in PLOS ONE — forensic DNA research 🧬",
   "M.Eng in Computer Engineering @ Chulalongkorn University",
   "Slayed out-of-memory & latency bugs on an EV e-commerce platform",
@@ -953,7 +1008,7 @@ function showFact(text) {
 
   const SCENES = [
     { sel: ".hero", label: "AREA 1 · THE INTRO" },
-    { sel: "#about", label: "AREA 2 · 6+ YEARS OF CODE" },
+    { sel: "#about", label: `AREA 2 · ${experienceYearsDisplay} YEARS OF CODE` },
     { sel: "#experience", label: "AREA 3 · 5 COMPANIES" },
     { sel: "#skills", label: "AREA 4 · THE TOOLBOX" },
     { sel: "#contact", label: "AREA 5 · GET IN TOUCH" },
