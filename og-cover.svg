@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="accent" x1="90" y1="475" x2="1050" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4ef0c0" />
+      <stop offset="1" stop-color="#6c8cff" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#e8ecf4" stroke-opacity=".045" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#060913" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <path d="M0 0H1200V9H0z" fill="url(#accent)" />
+  <path d="M820 0 1200 0 1200 630 1050 630z" fill="#0b1020" />
+  <rect x="855" y="159" width="290" height="312" rx="38" fill="#10182a" stroke="#e8ecf4" stroke-opacity=".08" stroke-width="2" />
+  <path d="M930 397V233l140 164V233" fill="none" stroke="url(#accent)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="92" y="147" fill="#4ef0c0" font-family="monospace" font-size="21" letter-spacing="3">SOFTWARE ENGINEER  /  BANGKOK, THAILAND</text>
+  <text x="88" y="278" fill="#e8ecf4" font-family="Arial, sans-serif" font-size="94" font-weight="700">Nuttachai</text>
+  <text x="88" y="383" fill="#e8ecf4" font-family="Arial, sans-serif" font-size="94" font-weight="700">Kulthammanit</text>
+  <path d="M94 423H182" stroke="url(#accent)" stroke-width="6" stroke-linecap="round" />
+  <text x="92" y="482" fill="#aab2c5" font-family="Arial, sans-serif" font-size="30">Building high-performance systems that scale.</text>
+  <text x="92" y="553" fill="#4ef0c0" font-family="monospace" font-size="19" letter-spacing="2">JAVA  ·  SPRING BOOT  ·  NODE.JS  ·  REACT</text>
+</svg>
