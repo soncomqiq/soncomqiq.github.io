@@ -80,10 +80,17 @@ const phrases = [
   "Published researcher — PLOS ONE",
 ];
 const typedEl = document.getElementById("typed");
+const thaiPhrases = [
+  "Advanced Software Engineer ที่ KBTG",
+  "Java · Spring Boot · Microservices",
+  "React · Node.js · JavaScript",
+  "ผู้สอนที่เรียนรู้และพัฒนาตัวเองอยู่เสมอ",
+  "ผลงานวิจัยตีพิมพ์ใน PLOS ONE",
+];
 let pi = 0, ci = 0, deleting = false;
 
 function type() {
-  const phrase = phrases[pi];
+  const phrase = (document.documentElement.lang === "th" ? thaiPhrases : phrases)[pi];
   typedEl.textContent = phrase.slice(0, ci);
   if (!deleting) {
     ci++;
@@ -103,6 +110,12 @@ function type() {
   }
 }
 setTimeout(type, 1200);
+window.addEventListener("portfolio-language-change", () => {
+  pi = 0;
+  ci = 0;
+  deleting = false;
+  typedEl.textContent = "";
+});
 
 /* ---- Scroll reveal ---- */
 const observer = new IntersectionObserver(
